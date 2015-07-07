@@ -1,3 +1,5 @@
+import MarkerListView from './views/markerListView';
+
 (function(){
   'use strict';
 
@@ -8,23 +10,7 @@
       {title: 'rerp', position: '(34.851832,-81)'}
     ]);
 
-    $('body').prepend(JST.index(markers.toJSON()));
-
-
-    // var AppRouter = Backbone.Router.extend({
-    //   routes: {
-    //     '': 'index',
-    //     'brl':'brl',
-    //     'rental-bikes':'rental-bikes',
-    //     'static-map': 'static-map',
-    //     'laws':'laws'
-    //   }
-    // });
-    //
-    // index = function(){
-    //   $('body').prepend(JST.index(markers.toJSON()));
-    // },
-
-
+    var listView = new MarkerListView({collection: markers});
+    $('body').prepend(listView.el);
   });
 })();
