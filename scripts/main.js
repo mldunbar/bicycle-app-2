@@ -1,16 +1,12 @@
+import {Marker, MarkerCollection} from './models/markers';
 import MarkerListView from './views/markerListView';
+import BikeRouter from './router';
 
 (function(){
   'use strict';
 
   $(document).ready(function(){
-    var markers = new Backbone.Collection([
-      {title: 'TIY', position: '(34.851832,-82.399967)'},
-      {title: 'merp', position: '(35,-82.399967)'},
-      {title: 'rerp', position: '(34.851832,-81)'}
-    ]);
-
-    var listView = new MarkerListView({collection: markers});
-    $('body').prepend(listView.el);
+    new BikeRouter;
+    Backbone.history.start();
   });
 })();
