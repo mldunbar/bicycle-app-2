@@ -11,7 +11,7 @@ export default Backbone.Router.extend({
   },
 
   index: function(){
-    console.log("Index route has been called");
+    console.log('JST.index');
   },
 
   brl: function(){
