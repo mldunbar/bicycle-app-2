@@ -1,3 +1,4 @@
+import ajaxConfig from './ajax-config';
 import IndexView from './views/indexView';
 import router from './router';
 
