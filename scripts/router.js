@@ -30,7 +30,6 @@ var Router = Backbone.Router.extend({
 
   brl: function(){
     console.log("BRL route has been called");
-    
   },
 
   rental: function(){

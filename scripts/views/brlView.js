@@ -1,5 +1,5 @@
 export default Backbone.View.extend({
-  template: JST.brl,
+  template: JST['brl'],
 
   initialize: function() {
   this.render();
@@ -11,6 +11,8 @@ export default Backbone.View.extend({
         div: '#app',
         lat: options.myLocation.coords.latitude,
         lng: options.myLocation.coords.longitude,
+});
+
       });
     },
 });
