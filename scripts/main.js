@@ -1,5 +1,6 @@
 import ajaxConfig from './ajax-config';
 import IndexView from './views/indexView';
+import BrlView from './views/brlView';
 import router from './router';
 
 (function(){
