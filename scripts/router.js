@@ -1,5 +1,6 @@
 import IndexView from './views/indexView';
 import BrlView from './views/brlView';
+import RentalView from './views/rentalView';
 import {MarkerCollection} from './models/markers';
 import config from './ajax-config';
 
@@ -44,6 +45,16 @@ var Router = Backbone.Router.extend({
 
   rental: function(){
     console.log("rental route has been called");
+    this.markers = new MarkerCollection();
+    this.myLocation = new Promise(function(resolve, reject) {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    }).then(function(position) {
+      return position;
+    });
+    Promise.resolve(this.myLocation).then(function(value) {
+      this.RentalView = new RentalView({myLocation: value, collection: this.markers});
+      $('#app').prepend(this.RentalView.el);
+    }.bind(this));
   },
 
   laws: function(){

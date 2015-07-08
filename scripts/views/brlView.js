@@ -16,7 +16,7 @@ render: function(options) {
       lat: 34.8515234,
       lng: -82.3978678,
       infoWindow: {
-        content: 'yolo'
+        content: 'Two bike racks, accessible for employees via parking garage'
       },
     });
   },
