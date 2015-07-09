@@ -1,17 +1,22 @@
+import MapView from './mapView';
+
 export default Backbone.View.extend({
   template: JST['index'],
+  // tagName: 'ul',
+  // className: 'heading',
 
   initialize: function(options) {
-  this.render(options);
-},
+    this.render(options);
+  },
 
   render: function(options) {
-    this.$el.html(this.template(this.collection.toJSON()));
-      var map = new GMaps({
-        div: '#app',
-        lat: options.myLocation.coords.latitude,
-        lng: options.myLocation.coords.longitude,
-      });
-      map.addLayer('bicycling')
-    },
+    this.$el.html(this.template(this.model.toJSON()));
+    this.mapView = new MapView(options);
+    this.$el.append(this.mapView.el);
+  },
+
+  remove: function(){
+    this.mapView && this.mapView.remove();
+    Backbone.View.prototype.remove.apply(this);
+  }
 });

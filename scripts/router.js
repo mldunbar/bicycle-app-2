@@ -1,7 +1,10 @@
 import IndexView from './views/indexView';
 import BrlView from './views/brlView';
 import RentalView from './views/rentalView';
-import {MarkerCollection} from './models/markers';
+import LawsView from './views/lawsView';
+
+import {Marker} from './models/markers';
+
 import config from './ajax-config';
 
 var Router = Backbone.Router.extend({
@@ -17,42 +20,42 @@ var Router = Backbone.Router.extend({
 
   index: function(){
     console.log("index route has been called");
-    this.markers = new MarkerCollection();
+    this.marker = new Marker();
     this.myLocation = new Promise(function(resolve, reject) {
         navigator.geolocation.getCurrentPosition(resolve, reject);
     }).then(function(position) {
       return position;
     });
     Promise.resolve(this.myLocation).then(function(value) {
-      this.IndexView = new IndexView({myLocation: value, collection: this.markers});
-      $('#app').prepend(this.IndexView.el);
+      this.IndexView = new IndexView({myLocation: value, model: this.marker});
+      $('#app').html(this.IndexView.el);
     }.bind(this));
 	},
 
   brl: function(){
     console.log("BRL route has been called");
-    this.markers = new MarkerCollection();
+    this.marker = new Marker();
     this.myLocation = new Promise(function(resolve, reject) {
         navigator.geolocation.getCurrentPosition(resolve, reject);
     }).then(function(position) {
       return position;
     });
     Promise.resolve(this.myLocation).then(function(value) {
-      this.BrlView = new BrlView({myLocation: value, collection: this.markers});
+      this.BrlView = new BrlView({myLocation: value, model: this.marker});
       $('#app').prepend(this.BrlView.el);
     }.bind(this));
   },
 
   rental: function(){
     console.log("rental route has been called");
-    this.markers = new MarkerCollection();
+    this.marker = new Marker();
     this.myLocation = new Promise(function(resolve, reject) {
         navigator.geolocation.getCurrentPosition(resolve, reject);
     }).then(function(position) {
       return position;
     });
     Promise.resolve(this.myLocation).then(function(value) {
-      this.RentalView = new RentalView({myLocation: value, collection: this.markers});
+      this.RentalView = new RentalView({myLocation: value, model: this.marker});
       $('#app').prepend(this.RentalView.el);
     }.bind(this));
   },
