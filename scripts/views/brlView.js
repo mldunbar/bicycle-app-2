@@ -37,7 +37,7 @@ addBrl: function(e){
   var lat = this.$('.lat').val();
   var lng = this.$('.lng').val();
   var infoWindow = this.$('.infoWindow').val();
-  console.log({
+  this.model.save({
     title: title,
     lat: lat,
     lng: lng,

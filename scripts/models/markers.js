@@ -1,12 +1,14 @@
 var Marker = Backbone.Model.extend({
   idAttribute: 'objectId',
 
-  // defaults : {
-  //   'title': 'title',
-  //   'lat': 'lat',
-  //   'lng': 'lng',
-  //   'infoWindow': 'infoWindow'
-  // }
+  defaults : {
+    title: '',
+    lat: 0,
+    lng: 0,
+    infoWindow: ''
+  },
+
+  url: 'https://api.parse.com/1/classes/Marker',
 
 });
 
