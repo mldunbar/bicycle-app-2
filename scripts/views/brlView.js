@@ -1,48 +1,48 @@
+import MapView from './mapView';
+import {Marker, MarkerCollection} from '.././models/markers';
+
 export default Backbone.View.extend({
   template: JST['brl'],
 
-  events: {
-    'click .show-add-brl' : 'showAddBrl',
-    'click .add-brl' : 'addBrl'
-  },
+events: {
+  'click .show-add-brl' : 'showAddBrl',
+  'click .add-brl' : 'addBrl'
+},
 
-  initialize: function(options) {
+initialize: function(options) {
   this.render(options);
+  this.listenTo(this.collection, 'update', this.render);
 },
 
 render: function(options) {
   this.$el.html(this.template(this.model.toJSON()));
-    var map = new GMaps({
-      div: '#app',
-      lat: options.myLocation.coords.latitude,
-      lng: options.myLocation.coords.longitude,
-    });
-    map.addMarker({
-      lat: 34.8515234,
-      lng: -82.3978678,
-      infoWindow: {
-        content: 'Two bike racks, accessible for employees via parking garage'
-      },
-    });
-  },
-
-showAddBrl: function(e){
-  e.preventDefault();
-  this.$('.add-brl-form').toggleClass('hidden');
+  this.mapView = new MapView(options);
+  this.$el.append(this.mapView.el);
 },
 
-  addBrl: function(e){
-    e.preventDefault();
-    var title = this.$('.marker-title').val();
-    var lat = this.$('latitude').val();
-    var lng = this.$('longitude').val();
-    var infoWindow = this.$('info').val();
-    this.model.create({
-      title: title,
-      lat: lat,
-      lng: lng,
-      infoWindow: infoWindow
-    });
-  }
+remove: function(){
+  this.mapView && this.mapView.remove();
+  Backbone.View.prototype.remove.apply(this);
+},
+
+//this function doesn't work...
+showAddBrl: function(){
+  this.$('.add-brl-form').toggleClass('hidden');
+  console.log('merp');
+},
+
+addBrl: function(e){
+  e.preventDefault();
+  var title = this.$('.title').val();
+  var lat = this.$('.lat').val();
+  var lng = this.$('.lng').val();
+  var infoWindow = this.$('.infoWindow').val();
+  console.log({
+    title: 'title',
+    lat: lat,
+    lng: lng,
+    infoWindow: 'infoWindow'
+  });
+}
 
 });

@@ -1,3 +1,5 @@
+import MapView from './mapView';
+
 export default Backbone.View.extend({
   template: JST['laws'],
 
@@ -8,4 +10,10 @@ export default Backbone.View.extend({
   render: function(options) {
     this.$el.html(this.template(this.collection.toJSON()));
   },
+
+  remove: function(){
+    this.mapView && this.mapView.remove();
+    Backbone.View.prototype.remove.apply(this);
+  }
+
 });

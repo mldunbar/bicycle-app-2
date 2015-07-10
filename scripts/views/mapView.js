@@ -3,6 +3,7 @@ export default Backbone.View.extend({
 
   initialize: function(options) {
     this.render(options);
+    this.remove(options);
   },
 
   render: function(options) {

@@ -1,17 +1,21 @@
 var Marker = Backbone.Model.extend({
   idAttribute: 'objectId',
 
-      defaults: {
-        title: 'pls',
-        lat: 0.000000,
-        lng: 0.000000,
-        infoWindow: ''
-      },
+  // defaults : {
+  //   'title': 'title',
+  //   'lat': 'lat',
+  //   'lng': 'lng',
+  //   'infoWindow': 'infoWindow'
+  // }
+
 });
 
 var MarkerCollection = Backbone.Collection.extend({
-  url: 'https://api.parse.com/apps/classes/marker',
-  model: Marker
-});
+  url: 'https://api.parse.com/1/classes/Marker',
+  model: Marker,
 
-export default {Marker};
+parse: function(response){
+  return response.results;
+},
+});
+export default {Marker, MarkerCollection};

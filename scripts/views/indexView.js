@@ -2,8 +2,6 @@ import MapView from './mapView';
 
 export default Backbone.View.extend({
   template: JST['index'],
-  // tagName: 'ul',
-  // className: 'heading',
 
   initialize: function(options) {
     this.render(options);

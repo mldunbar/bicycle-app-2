@@ -2,21 +2,29 @@ import IndexView from './views/indexView';
 import BrlView from './views/brlView';
 import RentalView from './views/rentalView';
 import LawsView from './views/lawsView';
+import LoginView from './views/login/loginView';
 
-import {Marker} from './models/markers';
+import {Marker, MarkerCollection} from './models/markers';
 
-import config from './ajax-config';
+import './ajax-config';
 
 var Router = Backbone.Router.extend({
 
   routes: {
-    '' : 'index',
+    'login' : 'login',
+    'index' : 'index',
     'brl' : 'brl',
     'rental' : 'rental',
     'laws' : 'laws'
   },
 
-  initialize: function(){},
+  initialize: function(){
+
+  },
+
+  login: function(){
+    console.log("login route has been called");
+  },
 
   index: function(){
     console.log("index route has been called");
