@@ -38,10 +38,10 @@ addBrl: function(e){
   var lng = this.$('.lng').val();
   var infoWindow = this.$('.infoWindow').val();
   console.log({
-    title: 'title',
+    title: title,
     lat: lat,
     lng: lng,
-    infoWindow: 'infoWindow'
+    infoWindow: infoWindow
   });
 }
 
