@@ -19,19 +19,8 @@ export default Backbone.View.extend({
     },
 
 renderChildren: function(options) {
-  console.log(this.collection.models[0].attributes.results);
-  
-		 this.collection.models[0].attributes.results = this.collection.map(function(child) {
-				var lat = child.attributes.lat;
-				var lng = child.attributes.lng;
-
-        this.map.addMarker ({
-          title: [0].title,
-          lat: this.collection.models[0].attributes.results[1].lat,
-          lng: this.collection.models[0].attributes.results[1].lng,
-          infoWindow: this.collection.models[0].attributes.results.infoWindow
-        });
-
+    this.collection.forEach(function(marker) {
+        this.map.addMarker(marker.toJSON());
 		}.bind(this));
   },
 

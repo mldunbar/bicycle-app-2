@@ -34,17 +34,14 @@ var Router = Backbone.Router.extend({
   brl: function(){
     console.log("BRL route has been called");
     this.Marker = new MarkerCollection();
-    this.myLocation = new Promise(function(resolve, reject) {
+    new Promise(function(resolve, reject) {
         navigator.geolocation.getCurrentPosition(resolve, reject);
     }).then(function(position) {
-      return position;
-    });
-    Promise.resolve(this.myLocation).then(function(value) {
-        this.Marker.fetch().then(function(data){
-        this.markerCollection = new MarkerCollection(data);
-        this.BrlView = new BrlView({collection: this.markerCollection, myLocation: value});
+      this.Marker.fetch().then(function(data){
+        console.log(this.Marker, position);
+        this.BrlView = new BrlView({collection: this.Marker, myLocation: position});
         $('#app').html(this.BrlView.el);
-      });
+      }.bind(this));
     }.bind(this));
   },
 
