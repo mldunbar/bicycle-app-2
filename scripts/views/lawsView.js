@@ -12,11 +12,11 @@ events: {
 },
 
   render: function(options) {
-    this.$el.html(this.template(this.collection.toJSON()));
+    this.$el.html(this.template(this.model));
   },
 
   remove: function(){
-    this.mapView && this.mapView.remove();
+    // this.mapView && this.mapView.remove();
     Backbone.View.prototype.remove.apply(this);
   }
 

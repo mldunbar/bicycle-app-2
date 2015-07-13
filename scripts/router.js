@@ -4,9 +4,9 @@ import RentalView from './views/rentalView';
 import LawsView from './views/lawsView';
 import LoginView from './views/login/loginView';
 
-import {Marker, MarkerCollection} from './models/markers';
+import {MarkerCollection} from './models/markers';
 
-import './ajax-config';
+import config from './ajax-config';
 
 var Router = Backbone.Router.extend({
 
@@ -33,15 +33,18 @@ var Router = Backbone.Router.extend({
 
   brl: function(){
     console.log("BRL route has been called");
-    this.marker = new Marker();
+    this.Marker = new MarkerCollection();
     this.myLocation = new Promise(function(resolve, reject) {
         navigator.geolocation.getCurrentPosition(resolve, reject);
     }).then(function(position) {
       return position;
     });
     Promise.resolve(this.myLocation).then(function(value) {
-      this.BrlView = new BrlView({myLocation: value, model: this.marker});
-      $('#app').prepend(this.BrlView.el);
+        this.Marker.fetch().then(function(data){
+        this.markerCollection = new MarkerCollection(data);
+        this.BrlView = new BrlView({collection: this.markerCollection, myLocation: value});
+        $('#app').html(this.BrlView.el);
+      });
     }.bind(this));
   },
 

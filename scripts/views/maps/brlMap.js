@@ -15,12 +15,12 @@ export default Backbone.View.extend({
         height: 500
       });
       map.addLayer('bicycling')
-      map.addMarker({
-        lat: this.lat,
-        lng: this.lng,
-        infoWindow: {
-          content: ''
-        },
-      });
+      // map.addMarker({
+      //   lat: this.lat,
+      //   lng: this.lng,
+      //   infoWindow: {
+      //     content: ''
+      //   },
+      // });
     }
 });

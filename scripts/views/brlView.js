@@ -7,7 +7,8 @@ export default Backbone.View.extend({
 events: {
   'click .show-add-brl' : 'showAddBrl',
   'click .add-brl' : 'addBrl',
-  'click' : 'remove'
+  'click .remove-form' : 'removeForm',
+  'click .rental-bikes .laws' : 'remove'
 },
 
 initialize: function(options) {
@@ -16,7 +17,7 @@ initialize: function(options) {
 },
 
 render: function(options) {
-  this.$el.html(this.template(this.model.toJSON()));
+  this.$el.html(this.template(this.collection.toJSON()));
   this.mapView = new MapView(options);
   this.$el.append(this.mapView.el);
 },
@@ -26,7 +27,9 @@ remove: function(){
   Backbone.View.prototype.remove.apply(this);
 },
 
-//this function doesn't work...
+
+
+//this function doesn't work because toggleClass...
 showAddBrl: function(){
   this.$('.add-brl-form').toggleClass('hidden');
   console.log('merp');
@@ -44,6 +47,13 @@ addBrl: function(e){
     lng: lng,
     infoWindow: infoWindow
   });
+},
+
+removeForm: function(){
+  var title = this.$('.title').val('');
+  var lat = this.$('.lat').val('');
+  var lng = this.$('.lng').val('');
+  var infoWindow = this.$('.infoWindow').val('');
 }
 
 });

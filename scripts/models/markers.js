@@ -18,6 +18,8 @@ var MarkerCollection = Backbone.Collection.extend({
 
 parse: function(response){
   return response.results;
-},
+}
+
 });
-export default {Marker, MarkerCollection};
+
+export default {MarkerCollection}
