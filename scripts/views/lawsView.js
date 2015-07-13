@@ -7,6 +7,10 @@ export default Backbone.View.extend({
   this.render(options);
 },
 
+events: {
+  'click' : 'remove'
+},
+
   render: function(options) {
     this.$el.html(this.template(this.collection.toJSON()));
   },

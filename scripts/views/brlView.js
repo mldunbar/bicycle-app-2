@@ -6,7 +6,8 @@ export default Backbone.View.extend({
 
 events: {
   'click .show-add-brl' : 'showAddBrl',
-  'click .add-brl' : 'addBrl'
+  'click .add-brl' : 'addBrl',
+  'click' : 'remove'
 },
 
 initialize: function(options) {

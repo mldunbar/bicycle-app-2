@@ -28,16 +28,7 @@ var Router = Backbone.Router.extend({
 
   index: function(){
     console.log("index route has been called");
-    this.marker = new Marker();
-    this.myLocation = new Promise(function(resolve, reject) {
-        navigator.geolocation.getCurrentPosition(resolve, reject);
-    }).then(function(position) {
-      return position;
-    });
-    Promise.resolve(this.myLocation).then(function(value) {
-      this.IndexView = new IndexView({myLocation: value, model: this.marker});
-      $('#app').html(this.IndexView.el);
-    }.bind(this));
+    console.log(this);
 	},
 
   brl: function(){

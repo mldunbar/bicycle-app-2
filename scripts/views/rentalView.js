@@ -3,6 +3,10 @@ import MapView from './mapView';
 export default Backbone.View.extend({
   template: JST['rental'],
 
+events: {
+  'click' : 'remove'
+},
+
 initialize: function(options) {
   this.render(options);
 },
