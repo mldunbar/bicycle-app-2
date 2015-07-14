@@ -1,4 +1,4 @@
-<h1>Bicycle Routes in Greenville</h1>
+<h1>What do you want to know about bikes in Greenville {{username}}?</h1>
 <ul class="heading">
   <li>
     <a href="http://localhost:9000/#brl"><button class="brl">Bike Rack Locations</button></a>
@@ -7,6 +7,19 @@
     <a href="http://localhost:9000/#rental"><button class="rental-bikes">Rental Bike Locations</button></a>
   </li>
   <li>
+    <a href="https://greenville.bcycle.com/"><button class="bcycle">Find bCycles here</button></a>
+  </li>
+  <li>
     <a href="http://localhost:9000/#laws"><button class="laws">Laws and Safety</button></a>
   </li>
+</ul>
+
+<ul>
+  {{#each Marker}}
+  <li>
+    <h3>
+      {{title}} "-" {{infoWindow}}
+    </h3>
+  </li>
+  {{/each}}
 </ul>
