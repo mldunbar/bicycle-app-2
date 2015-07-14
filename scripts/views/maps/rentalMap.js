@@ -7,21 +7,21 @@ export default Backbone.View.extend({
   },
 
   render: function(options) {
-      var map = new GMaps({
+      this.map = new GMaps({
         el: this.el,
         lat: options.myLocation.coords.latitude,
         lng: options.myLocation.coords.longitude,
         width: 500,
         height: 500
       });
-      map.addLayer('bicycling')
-      map.addMarker({
-        title: 'Reedy Rides',
-        lat: 34.8499076,
-        lng: -82.3998955,
-        infoWindow: {
-          content: 'website: http://www.reedyrides.com/'
-        },
-      });
-}
-});
+      this.map.addLayer('bicycling');
+      this.renderChildren();
+    },
+
+renderChildren: function(options) {
+    this.collection.forEach(function(marker) {
+        this.map.addMarker(marker.toJSON());
+		}.bind(this));
+  },
+
+  });

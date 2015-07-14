@@ -5,6 +5,7 @@ import LawsView from './views/lawsView';
 import LoginView from './views/login/loginView';
 
 import {MarkerCollection} from './models/markers';
+import {RentalMarkerCollection} from './models/rentalMarkers';
 
 import config from './ajax-config';
 
@@ -38,7 +39,6 @@ var Router = Backbone.Router.extend({
         navigator.geolocation.getCurrentPosition(resolve, reject);
     }).then(function(position) {
       this.Marker.fetch().then(function(data){
-        console.log(this.Marker, position);
         this.BrlView = new BrlView({collection: this.Marker, myLocation: position});
         $('#app').html(this.BrlView.el);
       }.bind(this));
@@ -47,15 +47,15 @@ var Router = Backbone.Router.extend({
 
   rental: function(){
     console.log("rental route has been called");
-    this.marker = new Marker();
-    this.myLocation = new Promise(function(resolve, reject) {
+    this.rentalMarker = new RentalMarkerCollection();
+    new Promise(function(resolve, reject) {
         navigator.geolocation.getCurrentPosition(resolve, reject);
     }).then(function(position) {
-      return position;
-    });
-    Promise.resolve(this.myLocation).then(function(value) {
-      this.RentalView = new RentalView({myLocation: value, model: this.marker});
-      $('#app').prepend(this.RentalView.el);
+    this.rentalMarker.fetch().then(function(data) {
+      console.log(this.rentalMarker, position);
+      this.RentalView = new RentalView({collection: this.rentalMarker, myLocation: position});
+      $('#app').html(this.RentalView.el);
+      }.bind(this));
     }.bind(this));
   },
 

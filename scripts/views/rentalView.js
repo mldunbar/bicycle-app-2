@@ -1,18 +1,20 @@
 import MapView from './mapView';
+import {RentalMarkerCollection} from '.././models/rentalMarkers';
 
 export default Backbone.View.extend({
   template: JST['rental'],
 
 events: {
-  'click' : 'remove'
+  'click .bcycle .brl .laws' : 'remove'
 },
 
 initialize: function(options) {
   this.render(options);
+  this.listenTo(this.collection, 'update', this.render);
 },
 
 render: function(options) {
-  this.$el.html(this.template(this.model.toJSON()));
+  this.$el.html(this.template(this.collection.toJSON()));
   this.mapView = new MapView(options);
   this.$el.append(this.mapView.el);
 },
@@ -20,13 +22,6 @@ render: function(options) {
 remove: function(){
   this.mapView && this.mapView.remove();
   Backbone.View.prototype.remove.apply(this);
-},
+}
 
-    // map.addMarker({
-    //   lat: 34.8499076,
-    //   lng: -82.3998955,
-    //   infoWindow: {
-    //     content: 'website: http://www.reedyrides.com/'
-    //   },
-    // });
 });

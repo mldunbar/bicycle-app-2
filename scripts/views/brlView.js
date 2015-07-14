@@ -1,24 +1,27 @@
+import {Marker} from '.././models/markers';
+import {MarkerCollection} from '.././models/markers';
 import MapView from './mapView';
-import {Marker, MarkerCollection} from '.././models/markers';
 
 export default Backbone.View.extend({
   template: JST['brl'],
 
 events: {
   'click .show-add-brl' : 'showAddBrl',
-  'click .add-brl' : 'addBrl',
+  'submit .add-brl-form' : 'addBrl',
   'click .remove-form' : 'removeForm',
-  'click .rental-bikes .laws' : 'remove'
+  'click .rental-bikes .laws' : 'remove',
+  'click map' : 'showInfo'
 },
 
 initialize: function(options) {
-  this.render(options);
-  this.listenTo(this.collection, 'update', this.render);
+  // TODO: move this to router to ensure it's only created once. Pass it as an
+  // argument to this view so it can be rendered.
+  this.mapView = new MapView(options);
+  this.render();
 },
 
-render: function(options) {
+render: function() {
   this.$el.html(this.template(this.collection.toJSON()));
-  this.mapView = new MapView(options);
   this.$el.append(this.mapView.el);
 },
 
@@ -27,7 +30,9 @@ remove: function(){
   Backbone.View.prototype.remove.apply(this);
 },
 
-
+showInfo: function(){
+  console.log('infoWindow');
+},
 
 //this function doesn't work because toggleClass...
 showAddBrl: function(){
@@ -38,14 +43,15 @@ showAddBrl: function(){
 addBrl: function(e){
   e.preventDefault();
   var title = this.$('.title').val();
-  var lat = this.$('.lat').val();
-  var lng = this.$('.lng').val();
+  var lat = +this.$('.lat').val();
+  var lng = +this.$('.lng').val();
   var infoWindow = this.$('.infoWindow').val();
-  this.model.save({
+  console.log(this);
+  this.collection.create({
     title: title,
     lat: lat,
     lng: lng,
-    infoWindow: infoWindow
+    infoWindow: {content: infoWindow}
   });
 },
 

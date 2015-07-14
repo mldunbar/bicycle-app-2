@@ -3,7 +3,7 @@ export default Backbone.View.extend({
 
   initialize: function(options) {
     this.render(options);
-    this.remove(options);
+    this.listenTo(this.collection, 'update', this.renderChildren);
   },
 
   render: function(options) {
@@ -19,6 +19,7 @@ export default Backbone.View.extend({
     },
 
 renderChildren: function(options) {
+  this.map.removeMarkers();
     this.collection.forEach(function(marker) {
         this.map.addMarker(marker.toJSON());
 		}.bind(this));

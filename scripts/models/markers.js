@@ -8,8 +8,6 @@ var Marker = Backbone.Model.extend({
     infoWindow: ''
   },
 
-  url: 'https://api.parse.com/1/classes/Marker',
-
 });
 
 var MarkerCollection = Backbone.Collection.extend({
@@ -22,4 +20,5 @@ parse: function(response){
 
 });
 
+export default {Marker};
 export default {MarkerCollection}

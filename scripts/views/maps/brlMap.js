@@ -7,20 +7,21 @@ export default Backbone.View.extend({
   },
 
   render: function(options) {
-      var map = new GMaps({
+      this.map = new GMaps({
         el: this.el,
         lat: options.myLocation.coords.latitude,
         lng: options.myLocation.coords.longitude,
         width: 500,
         height: 500
       });
-      map.addLayer('bicycling')
-      // map.addMarker({
-      //   lat: this.lat,
-      //   lng: this.lng,
-      //   infoWindow: {
-      //     content: ''
-      //   },
-      // });
-    }
-});
+      this.map.addLayer('bicycling');
+      this.renderChildren();
+    },
+
+renderChildren: function(options) {
+    this.collection.forEach(function(marker) {
+        this.map.addMarker(marker.toJSON());
+		}.bind(this));
+  },
+
+  });
