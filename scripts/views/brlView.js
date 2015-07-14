@@ -51,7 +51,8 @@ addBrl: function(e){
     title: title,
     lat: lat,
     lng: lng,
-    infoWindow: {content: infoWindow}
+    infoWindow: {content: infoWindow
+    }
   });
 },
 

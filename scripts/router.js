@@ -7,12 +7,14 @@ import LoginView from './views/login/loginView';
 import {MarkerCollection} from './models/markers';
 import {RentalMarkerCollection} from './models/rentalMarkers';
 
+import {UserCollection} from './models/users';
+
 import config from './ajax-config';
 
 var Router = Backbone.Router.extend({
 
   routes: {
-    'login' : 'login',
+    '' : 'login',
     'index' : 'index',
     'brl' : 'brl',
     'rental' : 'rental',
@@ -20,12 +22,19 @@ var Router = Backbone.Router.extend({
   },
 
   initialize: function(){
-
+    Parse.initialize ("CfSNdvfYJdwach6FMkR4Mjks3W5KQVUeyl7QzEJK","gXDnw6tCnkjNJtW4rkP57Z0K8wzgN9zMV2ETl7wf")
   },
 
   login: function(){
     console.log("login route has been called");
-  },
+    if (Parse.User.current()) {
+      this.userHome();
+    } else {
+      var users = new UserCollection();
+      var view = new LoginView({collection: users});
+      $('#app').html(view.el)
+  }
+},
 
   index: function(){
     console.log("index route has been called");
