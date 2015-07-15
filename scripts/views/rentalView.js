@@ -5,6 +5,7 @@ export default Backbone.View.extend({
   template: JST['rental'],
 
 events: {
+  'click .logout-button' : 'logout',
   'click .bcycle .brl .laws' : 'remove'
 },
 
@@ -22,6 +23,10 @@ render: function(options) {
 remove: function(){
   this.mapView && this.mapView.remove();
   Backbone.View.prototype.remove.apply(this);
+},
+
+logout: function(){
+  Parse.User.logOut();
 }
 
 });

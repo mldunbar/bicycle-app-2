@@ -8,6 +8,7 @@ export default Backbone.View.extend({
 },
 
 events: {
+  'click .logout-button' : 'logout',
   'click' : 'remove'
 },
 
@@ -18,6 +19,10 @@ events: {
   remove: function(){
     // this.mapView && this.mapView.remove();
     Backbone.View.prototype.remove.apply(this);
+  },
+
+  logout: function(){
+    Parse.User.logOut();
   }
 
 });

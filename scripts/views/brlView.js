@@ -10,7 +10,8 @@ events: {
   'submit .add-brl-form' : 'addBrl',
   'click .remove-form' : 'removeForm',
   'click .rental-bikes .laws' : 'remove',
-  'click map' : 'showInfo'
+  'click map' : 'showInfo',
+  'click .logout-button' : 'logout'
 },
 
 initialize: function(options) {
@@ -61,6 +62,10 @@ removeForm: function(){
   var lat = this.$('.lat').val('');
   var lng = this.$('.lng').val('');
   var infoWindow = this.$('.infoWindow').val('');
+},
+
+logout: function(){
+  Parse.User.logOut();
 }
 
 });

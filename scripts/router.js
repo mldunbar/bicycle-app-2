@@ -22,13 +22,13 @@ var Router = Backbone.Router.extend({
   },
 
   initialize: function(){
-    Parse.initialize ("CfSNdvfYJdwach6FMkR4Mjks3W5KQVUeyl7QzEJK","gXDnw6tCnkjNJtW4rkP57Z0K8wzgN9zMV2ETl7wf")
+    Parse.initialize ("CfSNdvfYJdwach6FMkR4Mjks3W5KQVUeyl7QzEJK","vFzGiwk3O85KvA2DTO7i456YKQKHRx2SY7h8esA3")
   },
 
   login: function(){
     console.log("login route has been called");
     if (Parse.User.current()) {
-      this.userHome();
+      this.index();
     } else {
       var users = new UserCollection();
       var view = new LoginView({collection: users});
