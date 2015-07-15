@@ -47,7 +47,7 @@ export default Backbone.View.extend({
       success: function(user) {
         console.log(user);
         Parse.User.become(user.sessionToken).then(function(user) {
-          router.navigate('index');
+          router.navigate('');
         });
       },
       error: function(user) {

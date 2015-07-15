@@ -15,6 +15,7 @@ export default Backbone.View.extend({
 
   logout: function(){
     Parse.User.logOut();
+    console.log('outchea');
   }
 
 });
