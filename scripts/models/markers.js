@@ -5,9 +5,8 @@ var Marker = Backbone.Model.extend({
     title: '',
     lat: 0,
     lng: 0,
-    infoWindow: ''
-  },
-
+    infoWindow: '',
+    },
 });
 
 var MarkerCollection = Backbone.Collection.extend({

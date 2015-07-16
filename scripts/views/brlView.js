@@ -10,7 +10,7 @@ events: {
   'submit .add-brl-form' : 'addBrl',
   'click .remove-form' : 'removeForm',
   'click .rental-bikes .laws' : 'remove',
-  'click map' : 'showInfo',
+  'click Marker' : 'showComments',
   'click .logout-button' : 'logout'
 },
 
@@ -31,14 +31,12 @@ remove: function(){
   Backbone.View.prototype.remove.apply(this);
 },
 
-showInfo: function(){
+showComments: function(){
   console.log('infoWindow');
 },
 
-//this function doesn't work because toggleClass...
 showAddBrl: function(){
-  this.$('.add-brl-form').toggleClass('hidden');
-  console.log('merp');
+  $('.add-brl-form').toggleClass('hidden');
 },
 
 addBrl: function(e){
@@ -66,6 +64,7 @@ removeForm: function(){
 
 logout: function(){
   Parse.User.logOut();
+  console.log('outchea');
 }
 
 });

@@ -14,6 +14,10 @@ $very-light-gray: #fafafa;
 $base-font-color: $dark-gray;
 $base-background-color: $very-light-gray;
 
+@import 'mobile';
+@import 'tablet';
+@import 'desktop';
+
 body {
   font-family: $base-font-family;
   background-color: $base-background-color;
@@ -29,12 +33,11 @@ li {
   display: inline-block;
 }
 
-.heading {
-  height: 50px;
-  width: 800px;
+.hidden {
+  display: none;
 }
 
-.map {
-  height: 500px;
-  width: 500px;
+#app {
+  height: 100%;
+  width: 100%;
 }

@@ -72,6 +72,9 @@ var Router = Backbone.Router.extend({
   },
 
   laws: function(){
+    var users = new UserCollection();
+    var view = new LawsView({collection: users});
+    $('#app').html(view.el);
     console.log("law route has been called");
   },
 

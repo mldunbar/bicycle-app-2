@@ -16,6 +16,7 @@ export default Backbone.View.extend({
 
   render: function(){
     this.$el.html(this.template());
+    console.log(this.username);
   },
 
   signup: function() {
@@ -47,13 +48,17 @@ export default Backbone.View.extend({
       success: function(user) {
         console.log(user);
         Parse.User.become(user.sessionToken).then(function(user) {
-          router.navigate('');
+          router.navigate('index');
         });
       },
       error: function(user) {
         alert("Login Failed: Username or Password Incorrect");
       }
     });
+  },
+
+  remove: function(){
+    Backbone.View.prototype.remove.apply(this);
   }
 
 });
