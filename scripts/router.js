@@ -38,7 +38,7 @@ var Router = Backbone.Router.extend({
 
   index: function(){
     console.log("index route has been called");
-    console.log(this);
+    console.log(Parse.User.current);
     var markers = new MarkerCollection();
     var view = new IndexView({collection: markers});
     $('#app').html(view.el);

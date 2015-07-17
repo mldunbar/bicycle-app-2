@@ -91,6 +91,14 @@ button:active{
   margin-top: 5%;
 }
 
+.add-notes-here {
+  @include outer-container;
+  @include span-columns(4);
+  @include shift (4);
+}
+
+//brl styles
+
 .brl-title{
   color: rgba(255, 255, 255, 1);
   text-align: center;
@@ -100,6 +108,8 @@ button:active{
   padding: 5px;
   text-align: center;
 }
+
+//laws style
 
 .laws-title {
   color: rgba(255, 255, 255, 1);

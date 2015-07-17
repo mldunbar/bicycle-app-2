@@ -1,6 +1,8 @@
 import config from './../../ajax-config';
 import router from './../../router';
 
+import IndexView from './../indexView';
+
 export default Backbone.View.extend({
   template: JST.login,
 
@@ -16,7 +18,6 @@ export default Backbone.View.extend({
 
   render: function(){
     this.$el.html(this.template());
-    console.log(this.username);
   },
 
   signup: function() {
@@ -24,7 +25,7 @@ export default Backbone.View.extend({
     var password = this.$('.signup-password').val();
     var email = this.$('.signup-email').val();
     var user = new Parse.User();
-    console.log(username, password);
+    console.log(username, password, sessionToken);
     user.set('username', username);
     user.set('password', password);
     user.set('email', email);
@@ -32,6 +33,7 @@ export default Backbone.View.extend({
     user.signUp(null, {
       success: function(user) {
         console.log('success!');
+        router.navigate('index', true);
       },
       error: function(user, error) {
         alert("nope");
@@ -47,11 +49,13 @@ export default Backbone.View.extend({
     Parse.User.logIn(username, password, {
       success: function(user) {
         console.log(user);
-        Parse.User.become(user.sessionToken).then(function(user) {
-          router.navigate('index');
-        });
+        // Parse.User.become(user.sessionToken).then(function(user) {
+        router.navigate('index', true);
+        // });
       },
       error: function(user) {
+      //   if
+      //   },
         alert("Login Failed: Username or Password Incorrect");
       }
     });

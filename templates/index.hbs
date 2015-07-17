@@ -1,4 +1,4 @@
-<h1 class="index-header">What do you want to know about cycling in Greenville {{username}}?</h1>
+<h1 class="index-header">What do you want to know about cycling in Greenville {{this.username}}?</h1>
 <ul class="heading">
   <li>
     <a href="http://localhost:9000/#brl"><button class="brl">Bike Rack Locations</button></a>
@@ -14,14 +14,16 @@
   </li>
 </ul>
 
-<ul>
-  {{#each Marker}}
-  <li>
-    <h3>
-      {{title}}  {{infoWindow}}
-    </h3>
-  </li>
-  {{/each}}
+<div class="add-notes-here hidden">
+
+  <h3 class="header-notes">Your notes</h3>
+
+  <textarea class="add-notes" rows="8" cols="40"></textarea>
+
+</div>
+
+<ul class="notes-list">
+
 </ul>
 
 <button class="logout-button">Logout</button>

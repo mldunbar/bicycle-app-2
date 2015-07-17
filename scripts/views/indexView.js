@@ -1,3 +1,5 @@
+import router from './../router';
+
 export default Backbone.View.extend({
   template: JST['index'],
 
@@ -10,13 +12,20 @@ export default Backbone.View.extend({
   },
 
   render: function(){
-    this.$el.html(this.template());
-    console.log(this.username);
+    this.$el.html(this.template);
+    console.log(this.objectId);
   },
 
   logout: function(){
-    Parse.User.logOut();
-    console.log('outchea');
-  }
+    Parse.User.logOut().then(function() {
+      if (!Parse.User.current()) {
+        router.navigate('', true);
+      }
+    }, function(){
+      if(!Parse.User.current()){
+        router.navigate('', true);
+    }
+  })
+}
 
 });
