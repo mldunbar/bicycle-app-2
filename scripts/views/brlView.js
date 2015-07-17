@@ -1,3 +1,5 @@
+import router from './../router';
+
 import {Marker} from '.././models/markers';
 import {MarkerCollection} from '.././models/markers';
 import MapView from './mapView';
@@ -63,8 +65,15 @@ removeForm: function(){
 },
 
 logout: function(){
-  Parse.User.logOut();
-  console.log('outchea');
+  Parse.User.logOut().then(function() {
+    if (!Parse.User.current()) {
+      router.navigate('', true);
+    }
+  }, function(){
+    if(!Parse.User.current()){
+      router.navigate('', true);
+  }
+})
 }
 
 });

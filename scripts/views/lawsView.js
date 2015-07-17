@@ -22,7 +22,15 @@ events: {
   },
 
   logout: function(){
-    Parse.User.logOut();
-  }
+    Parse.User.logOut().then(function() {
+      if (!Parse.User.current()) {
+        router.navigate('', true);
+      }
+    }, function(){
+      if(!Parse.User.current()){
+        router.navigate('', true);
+    }
+  })
+}
 
 });

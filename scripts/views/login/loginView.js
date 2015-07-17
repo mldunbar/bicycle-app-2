@@ -25,14 +25,12 @@ export default Backbone.View.extend({
     var password = this.$('.signup-password').val();
     var email = this.$('.signup-email').val();
     var user = new Parse.User();
-    console.log(username, password, sessionToken);
+    console.log(username, password);
     user.set('username', username);
     user.set('password', password);
     user.set('email', email);
-    console.log('set all');
     user.signUp(null, {
       success: function(user) {
-        console.log('success!');
         router.navigate('index', true);
       },
       error: function(user, error) {
@@ -49,13 +47,9 @@ export default Backbone.View.extend({
     Parse.User.logIn(username, password, {
       success: function(user) {
         console.log(user);
-        // Parse.User.become(user.sessionToken).then(function(user) {
         router.navigate('index', true);
-        // });
       },
       error: function(user) {
-      //   if
-      //   },
         alert("Login Failed: Username or Password Incorrect");
       }
     });

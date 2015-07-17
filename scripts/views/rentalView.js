@@ -1,3 +1,5 @@
+import router from './../router';
+
 import MapView from './mapView';
 import {RentalMarkerCollection} from '.././models/rentalMarkers';
 
@@ -26,7 +28,15 @@ remove: function(){
 },
 
 logout: function(){
-  Parse.User.logOut();
+  Parse.User.logOut().then(function() {
+    if (!Parse.User.current()) {
+      router.navigate('', true);
+    }
+  }, function(){
+    if(!Parse.User.current()){
+      router.navigate('', true);
+  }
+})
 }
 
 });
