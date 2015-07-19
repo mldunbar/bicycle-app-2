@@ -14,8 +14,139 @@ $very-light-gray: #fafafa;
 $base-font-color: $dark-gray;
 $base-background-color: $very-light-gray;
 
+@import 'mobile';
+@import 'tablet';
+@import 'desktop';
+
 body {
   font-family: $base-font-family;
-  background-color: $base-background-color;
+  background-color: rgba(81, 166, 255, 1);
   color: $base-font-color;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding: .5em;
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.hidden {
+  display: none;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  background-color: rgba(255, 255, 255, 1);
+  border: none;
+  padding: 20px;
+}
+
+button:hover {
+  background-color: rgba(255, 244, 194, 1);
+}
+
+button:active{
+  background-color: rgba(255, 201, 121, 1);
+}
+
+.logout-button{
+  padding: 10px;
+}
+
+.logout-button:hover{
+  background-color: rgba(255, 121, 121, 1);
+}
+
+//login page
+
+.signup-button:hover {
+  background-color: rgba(136, 204, 136, 1);
+}
+
+.login-button:hover {
+  background-color: rgba(136, 204, 136, 1);
+}
+
+//index page
+
+.index-header {
+  @include outer-container;
+  @include span-columns(9);
+  @include shift (2);
+  margin-top: 10%;
+}
+
+.heading button:hover {
+  background-color: rgba(136, 204, 136, 1);
+}
+
+.brl-heading button:hover {
+  background-color: rgba(136, 204, 136, 1);
+}
+
+.heading button:hover {
+  background-color: rgba(136, 204, 136, 1);
+}
+
+.heading {
+  @include outer-container;
+  @include span-columns(9);
+  @include shift (2);
+}
+
+.logout-button {
+  @include outer-container;
+  @include span-columns(2);
+  @include shift (5);
+  margin-top: 5%;
+}
+
+.add-notes-here {
+  @include outer-container;
+  @include span-columns(4);
+  @include shift (4);
+}
+
+//brl styles
+
+.brl-title{
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+}
+
+.brl-heading button {
+  padding: 5px;
+  text-align: center;
+  margin-left: 100px;
+}
+
+.show-add-brl {
+  display: block;
+}
+
+//laws style
+
+.laws-title {
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+}
+
+.laws {
+  font-weight: bold;
+}
+
+.ideas {
+  font-weight: bold;
 }
