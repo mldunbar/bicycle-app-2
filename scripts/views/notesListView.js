@@ -8,7 +8,27 @@ export default Backbone.View.extend({
     this.listenTo(this.collection, 'update', this.render);
   },
 
+events: {
+  'click .add-notes-button' : 'showAddNotes',
+  'submit .notes-add-form': 'saveNote',
+},
+
+showAddNotes: function(){
+  this.$('.notes-add-form').toggleClass('hidden');
+},
+
+saveNote: function(e){
+  e.preventDefault();
+  var title = this.$('.notes-title').val();
+  var content = this.$('.notes-content').val();
+  this.collection.create({
+    title: title,
+    content: content
+  });
+},
+
   render: function(){
+    this.$el.html(this.template);
     this.renderChildren();
   },
 
@@ -22,7 +42,6 @@ export default Backbone.View.extend({
       this.$el.append(view.el);
       return view;
     }.bind(this));
-
     return this;
   },
 
