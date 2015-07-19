@@ -69,13 +69,35 @@ button:active{
   background-color: rgba(255, 121, 121, 1);
 }
 
+//login page
+
+.signup-button:hover {
+  background-color: rgba(136, 204, 136, 1);
+}
+
+.login-button:hover {
+  background-color: rgba(136, 204, 136, 1);
+}
+
 //index page
 
 .index-header {
   @include outer-container;
   @include span-columns(9);
   @include shift (2);
-  margin-top: 15%;
+  margin-top: 10%;
+}
+
+.heading button:hover {
+  background-color: rgba(136, 204, 136, 1);
+}
+
+.brl-heading button:hover {
+  background-color: rgba(136, 204, 136, 1);
+}
+
+.heading button:hover {
+  background-color: rgba(136, 204, 136, 1);
 }
 
 .heading {
@@ -107,6 +129,11 @@ button:active{
 .brl-heading button {
   padding: 5px;
   text-align: center;
+  margin-left: 100px;
+}
+
+.show-add-brl {
+  display: block;
 }
 
 //laws style

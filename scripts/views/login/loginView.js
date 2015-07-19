@@ -12,7 +12,6 @@ export default Backbone.View.extend({
   },
 
   initialize: function(){
-    Parse.initialize ("CfSNdvfYJdwach6FMkR4Mjks3W5KQVUeyl7QzEJK","vFzGiwk3O85KvA2DTO7i456YKQKHRx2SY7h8esA3");
     this.render();
   },
 

@@ -9,11 +9,12 @@ export default Backbone.View.extend({
 
   events: {
     'click .logout-button' : 'logout',
+    'click .add-notes-button' : 'showAddNotes',
+    'submit form' : 'addNotes'
   },
 
   render: function(){
     this.$el.html(this.template);
-    console.log(this.objectId);
   },
 
   logout: function(){
@@ -26,6 +27,16 @@ export default Backbone.View.extend({
         router.navigate('', true);
     }
   })
-}
+},
+
+showAddNotes: function(){
+  $('.add-notes-here').toggleClass('hidden');
+},
+
+addNotes: function(e){
+    e.preventDefault();
+    var text = this.$('.add-notes').val();
+    this.model.create();
+  },
 
 });

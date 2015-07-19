@@ -1,11 +1,14 @@
 import IndexView from './views/indexView';
+import NotesListView from './views/notesListView';
+import NotesItemView from './views/notesItemView';
 import BrlView from './views/brlView';
 import RentalView from './views/rentalView';
 import LawsView from './views/lawsView';
 import LoginView from './views/login/loginView';
 
-import {MarkerCollection} from './models/markers';
-import {RentalMarkerCollection} from './models/rentalMarkers';
+import {Marker, MarkerCollection} from './models/markers';
+import {RentalMarker, RentalMarkerCollection} from './models/rentalMarkers';
+import {Note, NoteCollection} from './models/notes';
 
 import {UserCollection} from './models/users';
 
@@ -18,11 +21,12 @@ var Router = Backbone.Router.extend({
     'index' : 'index',
     'brl' : 'brl',
     'rental' : 'rental',
-    'laws' : 'laws'
+    'laws' : 'laws',
+    'yournotes': 'yournotes'
   },
 
   initialize: function(){
-    Parse.initialize ("CfSNdvfYJdwach6FMkR4Mjks3W5KQVUeyl7QzEJK","vFzGiwk3O85KvA2DTO7i456YKQKHRx2SY7h8esA3")
+    Parse.initialize("CfSNdvfYJdwach6FMkR4Mjks3W5KQVUeyl7QzEJK","vFzGiwk3O85KvA2DTO7i456YKQKHRx2SY7h8esA3");
   },
 
   login: function(){
@@ -38,9 +42,8 @@ var Router = Backbone.Router.extend({
 
   index: function(){
     console.log("index route has been called");
-    console.log(Parse.User.current);
-    var markers = new MarkerCollection();
-    var view = new IndexView({collection: markers});
+    var notes = new NoteCollection();
+    var view = new IndexView({collection: notes});
     $('#app').html(view.el);
 	},
 
@@ -77,6 +80,15 @@ var Router = Backbone.Router.extend({
     $('#app').html(view.el);
     console.log("law route has been called");
   },
+
+  yournotes: function(){
+    var users = new UserCollection();
+    var notes = new NoteCollection();
+    notes.fetch();
+    var view = new NotesListView({collection: notes});
+    $('#app').html(view.el);
+    console.log("notes route has been called");
+  }
 
 });
 

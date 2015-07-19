@@ -1,3 +1,5 @@
+import router from './../router';
+
 import MapView from './mapView';
 
 export default Backbone.View.extend({

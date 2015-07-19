@@ -3,12 +3,12 @@ var Note = Backbone.Model.extend({
 
   defaults: {
     title: '',
-    url: ''
+    content: '',
   },
 
 });
 
-var BookmarkCollection = Backbone.Collection.extend({
+var NoteCollection = Backbone.Collection.extend({
   url: "https://api.parse.com/1/classes/note",
   model: Note,
 
