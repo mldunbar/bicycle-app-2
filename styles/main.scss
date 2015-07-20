@@ -2,7 +2,7 @@
 @import '../bower_components/neat/app/assets/stylesheets/neat';
 
 // Typography
-$base-font-family: $helvetica;
+$base-font-family: 'Oxygen', sans-serif;
 
 // Colors
 $blue: #477dca;
@@ -11,16 +11,20 @@ $medium-gray: #999;
 $light-gray: #ddd;
 $very-light-gray: #fafafa;
 
-$base-font-color: $dark-gray;
+$base-font-color: rgba(55, 54, 56, 1);
 $base-background-color: $very-light-gray;
 
-@import 'mobile';
-@import 'tablet';
-@import 'desktop';
+@import 'index';
+@import 'laws';
+@import 'login';
+@import 'notes-list-item';
+@import 'notes-list';
+@import 'rental';
+
+
 
 body {
   font-family: $base-font-family;
-  background-color: rgba(81, 166, 255, 1);
   color: $base-font-color;
 }
 
@@ -36,6 +40,15 @@ li {
 a {
   text-decoration: none;
   color: black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 
 .hidden {
@@ -67,16 +80,6 @@ button:active{
 
 .logout-button:hover{
   background-color: rgba(255, 121, 121, 1);
-}
-
-//login page
-
-.signup-button:hover {
-  background-color: rgba(136, 204, 136, 1);
-}
-
-.login-button:hover {
-  background-color: rgba(136, 204, 136, 1);
 }
 
 //index page

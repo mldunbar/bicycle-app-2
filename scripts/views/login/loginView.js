@@ -8,7 +8,8 @@ export default Backbone.View.extend({
 
   events: {
     'click .login-button' : 'login',
-    'click .signup-button' : 'signup'
+    'click .signup-button' : 'signup',
+    'click .signup-heading' : 'showSignup'
   },
 
   initialize: function(){
@@ -52,6 +53,13 @@ export default Backbone.View.extend({
         alert("Login Failed: Username or Password Incorrect");
       }
     });
+  },
+
+  showSignup: function(){
+    $('.signup-username').toggleClass('hidden');
+    $('.signup-password').toggleClass('hidden');
+    $('.signup-email').toggleClass('hidden');
+    $('.signup-button').toggleClass('hidden');
   },
 
   remove: function(){
