@@ -55,7 +55,8 @@ export default Backbone.View.extend({
     });
   },
 
-  showSignup: function(){
+  showSignup: function(e){
+    e.preventDefault();
     $('.signup-username').toggleClass('hidden');
     $('.signup-password').toggleClass('hidden');
     $('.signup-email').toggleClass('hidden');
