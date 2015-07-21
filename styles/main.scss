@@ -123,3 +123,17 @@ button:active{
     margin-bottom: 1em;
   }
 }
+
+.loading{
+  @include shift(5.5);
+  margin-top: 20%;
+  color: rgba(255, 216, 56, 1);
+  vertical-align: middle;
+}
+
+.loading-div{
+  height: 100vh;
+  /* max-width: 100%;
+  max-height: 100%; */
+  background-color: rgba(239, 17, 123, .8);
+}
