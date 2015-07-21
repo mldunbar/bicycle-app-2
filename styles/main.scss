@@ -22,6 +22,8 @@ $base-background-color: $very-light-gray;
 @import 'notes-list';
 @import 'rental';
 @import 'header';
+@import 'link-styles';
+@import 'button-styles';
 
 body {
   font-family: $base-font-family;
@@ -55,6 +57,11 @@ h6 {
   display: none;
 }
 
+.full-heading h1 {
+  text-align: center;
+  background-color: rgba(239, 17, 123, .8);
+}
+
 #app {
   height: 100%;
   width: 100%;
@@ -65,11 +72,6 @@ h6 {
   @include shift(4);
   margin-top: .5em;
   text-align: center;
-  background-color: white;
-  color: rgba(64, 64, 65, 1);
-}
-
-.title:hover {
   color: rgba(239, 17, 123, 1);
 }
 
@@ -93,6 +95,7 @@ button:active{
     @include shift(1);
     width: 1000px;
     height: 500px;
+    margin-bottom: 1em;
   }
 }
 
@@ -104,7 +107,7 @@ button:active{
     @include shift(1);
     width: 500px;
     height: 500px;
-    border: 300px solid red;
+    margin-bottom: 1em;
   }
 }
 
@@ -117,5 +120,6 @@ button:active{
     display: inline-block;
     width: 400px;
     height: 500px;
+    margin-bottom: 1em;
   }
 }
