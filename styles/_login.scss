@@ -19,8 +19,8 @@
 
   .heading {
     @include outer-container;
-    @include span-columns(6);
-    @include shift(2);
+    @include span-columns(4);
+    @include shift(4);
     background-color: rgbA(255,255,255, .9);
     text-align: center;
     font-size: 3em;
@@ -148,8 +148,8 @@
 
     .heading {
       @include outer-container;
-      @include span-columns(6);
-      @include shift(2);
+      @include span-columns(4);
+      @include shift(4);
       background-color: rgbA(255,255,255, .9);
       text-align: center;
       font-size: 2em;

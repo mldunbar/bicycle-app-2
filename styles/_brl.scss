@@ -1,0 +1,21 @@
+.add-rack-div {
+  @include span-columns(8);
+  @include shift(2);
+  display: inline-block;
+}
+
+.add-rack-div .show-add-brl {
+  @include span-columns(2);
+  @include shift(5);
+  margin-bottom: 1em;
+  background-color: rgba(239, 17, 123, 1);
+  text-align: center;
+}
+
+.add-rack-div input,
+.add-rack-div button {
+  @include span-columns(3);
+  @include shift(4.5);
+  text-align: center;
+  margin-bottom: .5em;
+}
