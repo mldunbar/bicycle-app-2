@@ -60,6 +60,19 @@ h6 {
   width: 100%;
 }
 
+.title {
+  @include span-columns(4);
+  @include shift(4);
+  margin-top: .5em;
+  text-align: center;
+  background-color: white;
+  color: rgba(64, 64, 65, 1);
+}
+
+.title:hover {
+  color: rgba(239, 17, 123, 1);
+}
+
 button {
   background-color: rgba(255, 255, 255, 1);
   border: none;
@@ -71,14 +84,6 @@ button:hover {
 
 button:active{
   background-color: rgba(255, 201, 121, 1);
-}
-
-.logout-button{
-  padding: 10px;
-}
-
-.logout-button:hover{
-  background-color: rgba(255, 121, 121, 1);
 }
 
 @media (min-width: 840px) {
