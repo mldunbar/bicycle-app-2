@@ -11,6 +11,7 @@ export default Backbone.View.extend({
 events: {
   'click .add-notes-button' : 'showAddNotes',
   'submit .notes-add-form': 'saveNote',
+  'click .logout-button' : 'logout'
 },
 
 showAddNotes: function(){
@@ -48,6 +49,18 @@ saveNote: function(e){
   remove: function(){
     _.invoke(this.children || [], 'remove');
     Backbone.View.prototype.remove.apply(this, arguments);
+  },
+
+  logout: function(){
+    Parse.User.logOut().then(function() {
+      if (!Parse.User.current()) {
+        router.navigate('', true);
+      }
+    }, function(){
+      if(!Parse.User.current()){
+        router.navigate('', true);
+    }
+  })
   }
 
 });

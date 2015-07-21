@@ -33,6 +33,6 @@ events: {
         router.navigate('', true);
     }
   })
-}
+  }
 
 });
