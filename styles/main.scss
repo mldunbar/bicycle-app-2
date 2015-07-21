@@ -21,6 +21,7 @@ $base-background-color: $very-light-gray;
 @import 'notes-list-item';
 @import 'notes-list';
 @import 'rental';
+@import 'header';
 
 body {
   font-family: $base-font-family;
@@ -59,15 +60,9 @@ h6 {
   width: 100%;
 }
 
-/* .map{
-  width: 1000px;
-  height: 500px;
-} */
-
 button {
   background-color: rgba(255, 255, 255, 1);
   border: none;
-  padding: 2%;
 }
 
 button:hover {
@@ -86,11 +81,6 @@ button:active{
   background-color: rgba(255, 121, 121, 1);
 }
 
-.header{
-  @include span-columns(12);
-  background-color: rgba(255,255,255, 0.3);
-}
-
 @media (min-width: 840px) {
 
   .map{
@@ -99,8 +89,6 @@ button:active{
     width: 1000px;
     height: 500px;
   }
-
-
 }
 
 @media (max-width: 839px) and (min-width: 500px) {
@@ -112,7 +100,6 @@ button:active{
     width: 500px;
     height: 500px;
   }
-
 }
 
 @media (max-width: 499px) {
@@ -125,5 +112,4 @@ button:active{
     width: 400px;
     height: 500px;
   }
-
 }
