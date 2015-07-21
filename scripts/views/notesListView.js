@@ -19,8 +19,8 @@ showAddNotes: function(){
 
 saveNote: function(e){
   e.preventDefault();
-  var title = this.$('.notes-title').val();
-  var content = this.$('.notes-content').val();
+  var title = this.$('.notes-title-add').val();
+  var content = this.$('.notes-content-add').val();
   this.collection.create({
     title: title,
     content: content

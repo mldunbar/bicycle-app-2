@@ -11,7 +11,7 @@ export default Backbone.View.extend({
         el: this.el,
         lat: options.myLocation.coords.latitude,
         lng: options.myLocation.coords.longitude,
-        width: 500,
+        width: 1000,
         height: 500
       });
       // this.map.addControl('');

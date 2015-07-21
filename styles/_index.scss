@@ -1,12 +1,11 @@
 @media (min-width: 840px) {
 
-  html {
-    background: url('/images/sharrows.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
+.index-header {
+  font-size: 3em;
+  background-color: rgbA(255,255,255, .9);
+  text-align: center;
+  margin-top: 2%;
+}
 
 }
 

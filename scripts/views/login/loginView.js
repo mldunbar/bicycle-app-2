@@ -31,7 +31,7 @@ export default Backbone.View.extend({
     user.set('email', email);
     user.signUp(null, {
       success: function(user) {
-        router.navigate('index', true);
+        router.navigate('brl', true);
       },
       error: function(user, error) {
         alert("nope");
@@ -47,7 +47,7 @@ export default Backbone.View.extend({
     Parse.User.logIn(username, password, {
       success: function(user) {
         console.log(user);
-        router.navigate('index', true);
+        router.navigate('brl', true);
       },
       error: function(user) {
         alert("Login Failed: Username or Password Incorrect");

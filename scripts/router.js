@@ -1,4 +1,3 @@
-import IndexView from './views/indexView';
 import NotesListView from './views/notesListView';
 import NotesItemView from './views/notesItemView';
 import BrlView from './views/brlView';
@@ -18,11 +17,10 @@ var Router = Backbone.Router.extend({
 
   routes: {
     '' : 'login',
-    'index' : 'index',
     'brl' : 'brl',
     'rental' : 'rental',
     'laws' : 'laws',
-    'yournotes': 'yournotes'
+    'notes': 'notes'
   },
 
   initialize: function(){
@@ -32,20 +30,13 @@ var Router = Backbone.Router.extend({
   login: function(){
     console.log("login route has been called");
     if (Parse.User.current()) {
-      this.index();
+      this.brl();
     } else {
       var users = new UserCollection();
       var view = new LoginView({collection: users});
       $('#app').html(view.el)
   }
 },
-
-  index: function(){
-    console.log("index route has been called");
-    var notes = new NoteCollection();
-    var view = new IndexView({collection: notes});
-    $('#app').html(view.el);
-	},
 
   brl: function(){
     console.log("BRL route has been called");
@@ -81,7 +72,7 @@ var Router = Backbone.Router.extend({
     console.log("law route has been called");
   },
 
-  yournotes: function(){
+  notes: function(){
     var users = new UserCollection();
     var notes = new NoteCollection();
     notes.fetch();

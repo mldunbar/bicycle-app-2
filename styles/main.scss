@@ -14,14 +14,13 @@ $very-light-gray: #fafafa;
 $base-font-color: rgba(55, 54, 56, 1);
 $base-background-color: $very-light-gray;
 
+@import 'brl';
 @import 'index';
 @import 'laws';
 @import 'login';
 @import 'notes-list-item';
 @import 'notes-list';
 @import 'rental';
-
-
 
 body {
   font-family: $base-font-family;
@@ -60,6 +59,11 @@ h6 {
   width: 100%;
 }
 
+/* .map{
+  width: 1000px;
+  height: 500px;
+} */
+
 button {
   background-color: rgba(255, 255, 255, 1);
   border: none;
@@ -82,74 +86,44 @@ button:active{
   background-color: rgba(255, 121, 121, 1);
 }
 
-//index page
-
-.index-header {
-  @include outer-container;
-  @include span-columns(9);
-  @include shift (2);
-  margin-top: 10%;
+.header{
+  @include span-columns(12);
+  background-color: rgba(255,255,255, 0.3);
 }
 
-.heading button:hover {
-  background-color: rgba(136, 204, 136, 1);
+@media (min-width: 840px) {
+
+  .map{
+    @include span-columns(10);
+    @include shift(1);
+    width: 1000px;
+    height: 500px;
+  }
+
+
 }
 
-.brl-heading button:hover {
-  background-color: rgba(136, 204, 136, 1);
+@media (max-width: 839px) and (min-width: 500px) {
+
+  .map{
+    @include outer-container;
+    @include span-columns(10);
+    @include shift(1);
+    width: 500px;
+    height: 500px;
+  }
+
 }
 
-.heading button:hover {
-  background-color: rgba(136, 204, 136, 1);
-}
+@media (max-width: 499px) {
 
-.heading {
-  @include outer-container;
-  @include span-columns(9);
-  @include shift (2);
-}
+  .map{
+    @include outer-container;
+    @include span-columns(10);
+    @include shift(1);
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+  }
 
-.logout-button {
-  @include outer-container;
-  @include span-columns(2);
-  @include shift (5);
-  margin-top: 5%;
-}
-
-.add-notes-here {
-  @include outer-container;
-  @include span-columns(4);
-  @include shift (4);
-}
-
-//brl styles
-
-.brl-title{
-  color: rgba(255, 255, 255, 1);
-  text-align: center;
-}
-
-.brl-heading button {
-  padding: 5px;
-  text-align: center;
-  margin-left: 100px;
-}
-
-.show-add-brl {
-  display: block;
-}
-
-//laws style
-
-.laws-title {
-  color: rgba(255, 255, 255, 1);
-  text-align: center;
-}
-
-.laws {
-  font-weight: bold;
-}
-
-.ideas {
-  font-weight: bold;
 }
