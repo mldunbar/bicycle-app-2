@@ -2,7 +2,7 @@
 @import '../bower_components/neat/app/assets/stylesheets/neat';
 
 // Typography
-$base-font-family: $helvetica;
+$base-font-family: 'Oxygen', sans-serif;
 
 // Colors
 $blue: #477dca;
@@ -11,16 +11,22 @@ $medium-gray: #999;
 $light-gray: #ddd;
 $very-light-gray: #fafafa;
 
-$base-font-color: $dark-gray;
+$base-font-color: rgba(55, 54, 56, 1);
 $base-background-color: $very-light-gray;
 
-@import 'mobile';
-@import 'tablet';
-@import 'desktop';
+@import 'brl';
+@import 'index';
+@import 'laws';
+@import 'login';
+@import 'notes-list-item';
+@import 'notes-list';
+@import 'rental';
+@import 'header';
+@import 'link-styles';
+@import 'button-styles';
 
 body {
   font-family: $base-font-family;
-  background-color: rgba(81, 166, 255, 1);
   color: $base-font-color;
 }
 
@@ -38,8 +44,22 @@ a {
   color: black;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
 .hidden {
   display: none;
+}
+
+.full-heading h1 {
+  text-align: center;
+  background-color: rgba(239, 17, 123, .8);
 }
 
 #app {
@@ -47,10 +67,17 @@ a {
   width: 100%;
 }
 
+.title {
+  @include span-columns(4);
+  @include shift(4);
+  margin-top: .5em;
+  text-align: center;
+  color: rgba(239, 17, 123, 1);
+}
+
 button {
   background-color: rgba(255, 255, 255, 1);
   border: none;
-  padding: 20px;
 }
 
 button:hover {
@@ -61,92 +88,50 @@ button:active{
   background-color: rgba(255, 201, 121, 1);
 }
 
-.logout-button{
-  padding: 10px;
+@media (min-width: 840px) {
+
+  .map{
+    @include span-columns(10);
+    @include shift(1);
+    width: 1000px;
+    height: 500px;
+    margin-bottom: 1em;
+  }
 }
 
-.logout-button:hover{
-  background-color: rgba(255, 121, 121, 1);
+@media (max-width: 839px) and (min-width: 500px) {
+
+  .map{
+    @include outer-container;
+    @include span-columns(10);
+    @include shift(1);
+    width: 500px;
+    height: 500px;
+    margin-bottom: 1em;
+  }
 }
 
-//login page
+@media (max-width: 499px) {
 
-.signup-button:hover {
-  background-color: rgba(136, 204, 136, 1);
+  .map{
+    @include outer-container;
+    @include span-columns(10);
+    @include shift(1);
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    margin-bottom: 1em;
+  }
 }
 
-.login-button:hover {
-  background-color: rgba(136, 204, 136, 1);
+.loading{
+  @include shift(5.5);
+  margin-top: 20%;
+  color: rgba(255, 216, 56, 1);
+  vertical-align: middle;
 }
 
-//index page
-
-.index-header {
-  @include outer-container;
-  @include span-columns(9);
-  @include shift (2);
-  margin-top: 10%;
-}
-
-.heading button:hover {
-  background-color: rgba(136, 204, 136, 1);
-}
-
-.brl-heading button:hover {
-  background-color: rgba(136, 204, 136, 1);
-}
-
-.heading button:hover {
-  background-color: rgba(136, 204, 136, 1);
-}
-
-.heading {
-  @include outer-container;
-  @include span-columns(9);
-  @include shift (2);
-}
-
-.logout-button {
-  @include outer-container;
-  @include span-columns(2);
-  @include shift (5);
-  margin-top: 5%;
-}
-
-.add-notes-here {
-  @include outer-container;
-  @include span-columns(4);
-  @include shift (4);
-}
-
-//brl styles
-
-.brl-title{
-  color: rgba(255, 255, 255, 1);
-  text-align: center;
-}
-
-.brl-heading button {
-  padding: 5px;
-  text-align: center;
-  margin-left: 100px;
-}
-
-.show-add-brl {
-  display: block;
-}
-
-//laws style
-
-.laws-title {
-  color: rgba(255, 255, 255, 1);
-  text-align: center;
-}
-
-.laws {
-  font-weight: bold;
-}
-
-.ideas {
-  font-weight: bold;
+.loading-div{
+  height: 100vh;
+  background-color: rgba(239, 17, 123, .8);
 }

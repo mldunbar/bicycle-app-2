@@ -1,12 +1,14 @@
-<h1 class="note-title">{{title}}</h1>
-<p class="note-content">{{content}}</p>
+<div class="whole-note">
+  <h1 class="note-title">{{title}}</h1>
+  <p class="note-content">{{content}}</p>
 
-<button class="note-edit-button">edit</button>
+  <button class="note-edit-button">edit</button>
 
-<form class="note-edit-form hidden">
-  <input class="note-title"type="text" value="{{title}}">
-  <input class="note-content" type="text" value="{{content}}">
-  <input class="note-reset" type="reset" value="reset">
-  <input class="note-save" type="submit" value="save">
-  <button class="note-delete" type="delete">delete</button>
-</form>
+  <form class="note-edit-form hidden">
+    <input class="note-title-edit" placeholder={{title}}>
+    <textarea class="note-content-edit" placeholder={{content}}></textarea>
+    <button class="note-reset" type="reset">Reset</button>
+    <button class="note-save" type="submit">Save</button>
+    <button class="note-delete" type="delete">Delete</button>
+  </form>
+</div>

@@ -1,0 +1,386 @@
+.signup-button:hover {
+  background-color: rgba(255, 218, 56, 1);
+}
+
+.login-button:hover {
+  background-color: rgba(255, 218, 56, 1);
+}
+
+@media (min-width: 840px) {
+
+/*background image from Justin Younger*/
+  html {
+    background: url('/images/greyscale-bike.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  .heading {
+    @include outer-container;
+    @include span-columns(4);
+    @include shift(4);
+    background-color: rgbA(255,255,255, .9);
+    text-align: center;
+    font-size: 3em;
+    margin-top: .5em;
+    margin-bottom: 1em;
+  }
+
+  .login-form-container {
+    @include outer-container;
+    @include span-columns(6);
+    @include shift(3);
+    background-color: rgbA(255,255,255, .9);
+    margin: 10px, 0, 10px, 0;
+  }
+
+  .login-heading {
+    @include outer-container;
+    @include span-columns(6);
+    @include shift (3);
+    display: block;
+    text-align: center;
+  }
+
+  .login-heading:hover{
+    color: rgba(239, 17, 123, 1);
+  }
+
+  .login-username{
+    @include outer-container;
+    @include span-columns(6);
+    @include shift (3);
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .login-password{
+    @include outer-container;
+    @include span-columns(6);
+    @include shift (3);
+    display: block;
+    text-align: center;
+  }
+
+  .login-button{
+    @include outer-container;
+    @include span-columns(4);
+    @include shift (4);
+    display: block;
+    text-align: center;
+    margin-bottom: 2%;
+    margin-top: 2%;
+  }
+
+  .signup-form-container {
+    @include outer-container;
+    @include span-columns(6);
+    @include shift (3);
+    background-color: rgbA(255,255,255, .9);
+    margin: 10px, 0, 10px, 0;
+  }
+
+  .signup-heading {
+    @include outer-container;
+    @include span-columns(4);
+    @include shift (4);
+    display: block;
+    text-align: center;
+    margin-bottom: 2%;
+  }
+
+  .signup-heading:hover{
+    color: rgba(239, 17, 123, 1);
+  }
+
+  .signup-username{
+    @include outer-container;
+    @include span-columns(6);
+    @include shift (3);
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .signup-password{
+    @include outer-container;
+    @include span-columns(6);
+    @include shift (3);
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .signup-email{
+    @include outer-container;
+    @include span-columns(6);
+    @include shift (3);
+    display: block;
+    text-align: center;
+  }
+
+  .signup-button{
+    @include outer-container;
+    @include span-columns(4);
+    @include shift (4);
+    display: block;
+    text-align: center;
+    margin-bottom: 2%;
+    margin-top: 2%;
+  }
+
+
+}
+
+@media (max-width: 839px) and (min-width: 500px) {
+
+  html {
+    background: url('/images/greyscale-bike.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+
+    .heading {
+      @include outer-container;
+      @include span-columns(4);
+      @include shift(4);
+      background-color: rgbA(255,255,255, .9);
+      text-align: center;
+      font-size: 2em;
+      margin-top: .5em;
+      margin-bottom: 1em;
+    }
+
+    .login-form-container {
+      @include outer-container;
+      @include span-columns(6);
+      @include shift(3);
+      background-color: rgbA(255,255,255, .9);
+      margin: 10px, 0, 10px, 0;
+    }
+
+    .login-heading {
+      @include outer-container;
+      @include span-columns(6);
+      @include shift (3);
+      display: block;
+      text-align: center;
+    }
+
+    .login-heading:hover{
+      color: rgba(239, 17, 123, 1);
+    }
+
+    .login-username{
+      @include outer-container;
+      @include span-columns(6);
+      @include shift (3);
+      display: block;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .login-password{
+      @include outer-container;
+      @include span-columns(6);
+      @include shift (3);
+      display: block;
+      text-align: center;
+    }
+
+    .login-button{
+      @include outer-container;
+      @include span-columns(4);
+      @include shift (4);
+      display: block;
+      text-align: center;
+      margin-bottom: 2%;
+      margin-top: 2%;
+    }
+
+    .signup-form-container {
+      @include outer-container;
+      @include span-columns(6);
+      @include shift (3);
+      background-color: rgbA(255,255,255, .9);
+      margin: 10px, 0, 10px, 0;
+    }
+
+    .signup-heading {
+      @include outer-container;
+      @include span-columns(6);
+      @include shift (3);
+      display: block;
+      text-align: center;
+      margin-bottom: 2%;
+    }
+
+    .signup-heading:hover{
+      color: rgba(239, 17, 123, 1);
+    }
+
+    .signup-username{
+      @include outer-container;
+      @include span-columns(6);
+      @include shift (3);
+      display: block;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .signup-password{
+      @include outer-container;
+      @include span-columns(6);
+      @include shift (3);
+      display: block;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .signup-email{
+      @include outer-container;
+      @include span-columns(6);
+      @include shift (3);
+      display: block;
+      text-align: center;
+    }
+
+    .signup-button{
+      @include outer-container;
+      @include span-columns(4);
+      @include shift (4);
+      display: block;
+      text-align: center;
+      margin-bottom: 2%;
+      margin-top: 2%;
+    }
+
+
+
+}
+
+@media (max-width: 499px) {
+  html {
+    background: url('/images/greyscale-bike.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+
+    .heading {
+      background-color: rgba(255, 255, 255, .9);
+      text-align: center;
+      font-size: 3em;
+      margin-top: .5em;
+      margin-bottom: 1em;
+    }
+
+    .login-form-container {
+      margin: 10px, 0, 10px, 0;
+    }
+
+    .login-heading {
+      background-color: rgba(255, 255, 255, .9);
+      font-size: 1.5em;
+      display: inline-block;
+      text-align: center;
+      padding: 0;
+      margin: 0 0 2% 28%;
+    }
+
+    .login-heading:hover {
+      color: rgba(239, 17, 123, 1);
+    }
+
+    .login-username{
+      @include outer-container;
+      @include span-columns(6);
+      @include shift(3);
+      display: block;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .login-password{
+      @include outer-container;
+      @include span-columns(6);
+      @include shift(3);
+      display: block;
+      text-align: center;
+    }
+
+    .login-button{
+      @include outer-container;
+      @include span-columns(4);
+      @include shift(4);
+      display: block;
+      text-align: center;
+      padding: 2px;
+      margin-bottom: 2%;
+      margin-top: 2%;
+    }
+
+    .signup-form {
+      display: block;
+    }
+
+    .signup-heading {
+      @include outer-container;
+      @include span-columns(4);
+      @include shift(4);
+      display: block;
+      text-align: center;
+      padding: 2px;
+      margin-bottom: 2%;
+      margin-top: 2%;
+    }
+
+    .signup-heading:hover{
+      color: rgba(239, 17, 123, 1);
+    }
+
+    .signup-username{
+      @include outer-container;
+      @include span-columns(6);
+      @include shift(3);
+      display: block;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .signup-password{
+      @include outer-container;
+      @include span-columns(6);
+      @include shift(3);
+      display: block;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .signup-email{
+      @include outer-container;
+      @include span-columns(6);
+      @include shift(3);
+      display: block;
+      text-align: center;
+    }
+
+    .signup-button{
+      @include outer-container;
+      @include span-columns(4);
+      @include shift(4);
+      display: block;
+      text-align: center;
+      padding: 2px;
+      margin-bottom: 2%;
+      margin-top: 2%;
+    }
+}

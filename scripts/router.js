@@ -1,10 +1,10 @@
-import IndexView from './views/indexView';
 import NotesListView from './views/notesListView';
 import NotesItemView from './views/notesItemView';
 import BrlView from './views/brlView';
 import RentalView from './views/rentalView';
 import LawsView from './views/lawsView';
 import LoginView from './views/login/loginView';
+import LoadingView from './views/loadingView';
 
 import {Marker, MarkerCollection} from './models/markers';
 import {RentalMarker, RentalMarkerCollection} from './models/rentalMarkers';
@@ -18,11 +18,10 @@ var Router = Backbone.Router.extend({
 
   routes: {
     '' : 'login',
-    'index' : 'index',
     'brl' : 'brl',
     'rental' : 'rental',
     'laws' : 'laws',
-    'yournotes': 'yournotes'
+    'notes': 'notes'
   },
 
   initialize: function(){
@@ -30,9 +29,8 @@ var Router = Backbone.Router.extend({
   },
 
   login: function(){
-    console.log("login route has been called");
     if (Parse.User.current()) {
-      this.index();
+      this.brl();
     } else {
       var users = new UserCollection();
       var view = new LoginView({collection: users});
@@ -40,15 +38,9 @@ var Router = Backbone.Router.extend({
   }
 },
 
-  index: function(){
-    console.log("index route has been called");
-    var notes = new NoteCollection();
-    var view = new IndexView({collection: notes});
-    $('#app').html(view.el);
-	},
-
   brl: function(){
-    console.log("BRL route has been called");
+    var loadingView = new LoadingView();
+    $('#app').html(loadingView.el);
     this.Marker = new MarkerCollection();
     new Promise(function(resolve, reject) {
         navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -61,7 +53,8 @@ var Router = Backbone.Router.extend({
   },
 
   rental: function(){
-    console.log("rental route has been called");
+    var loadingView = new LoadingView();
+    $('#app').html(loadingView.el);
     this.rentalMarker = new RentalMarkerCollection();
     new Promise(function(resolve, reject) {
         navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -75,19 +68,21 @@ var Router = Backbone.Router.extend({
   },
 
   laws: function(){
+    var loadingView = new LoadingView();
+    $('#app').html(loadingView.el);
     var users = new UserCollection();
     var view = new LawsView({collection: users});
     $('#app').html(view.el);
-    console.log("law route has been called");
   },
 
-  yournotes: function(){
+  notes: function(){
+    var loadingView = new LoadingView();
+    $('#app').html(loadingView.el);
     var users = new UserCollection();
     var notes = new NoteCollection();
     notes.fetch();
     var view = new NotesListView({collection: notes});
     $('#app').html(view.el);
-    console.log("notes route has been called");
   }
 
 });

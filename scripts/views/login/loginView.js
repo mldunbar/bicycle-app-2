@@ -8,7 +8,8 @@ export default Backbone.View.extend({
 
   events: {
     'click .login-button' : 'login',
-    'click .signup-button' : 'signup'
+    'click .signup-button' : 'signup',
+    'click .signup-heading' : 'showSignup'
   },
 
   initialize: function(){
@@ -30,7 +31,7 @@ export default Backbone.View.extend({
     user.set('email', email);
     user.signUp(null, {
       success: function(user) {
-        router.navigate('index', true);
+        router.navigate('brl', true);
       },
       error: function(user, error) {
         alert("nope");
@@ -46,12 +47,20 @@ export default Backbone.View.extend({
     Parse.User.logIn(username, password, {
       success: function(user) {
         console.log(user);
-        router.navigate('index', true);
+        router.navigate('brl', true);
       },
       error: function(user) {
         alert("Login Failed: Username or Password Incorrect");
       }
     });
+  },
+
+  showSignup: function(e){
+    e.preventDefault();
+    $('.signup-username').toggleClass('hidden');
+    $('.signup-password').toggleClass('hidden');
+    $('.signup-email').toggleClass('hidden');
+    $('.signup-button').toggleClass('hidden');
   },
 
   remove: function(){

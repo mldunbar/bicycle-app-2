@@ -5,13 +5,14 @@ export default Backbone.View.extend({
 
   events: {
     'click .note-edit-button': 'editNote',
-    'submit .note-edit-form': 'saveNote',
+    'submit .note-edit-form': 'resaveNote',
     'click .note-reset': 'resetNote',
     'click .note-delete': 'deleteNote'
   },
 
   initialize: function(){
     this.render();
+    this.listenTo(this.model, 'update', this.render);
     this.listenTo(this.collection, 'update', this.render);
   },
 
@@ -23,15 +24,15 @@ export default Backbone.View.extend({
     this.$('.note-edit-form').toggleClass('hidden');
   },
 
-  saveNote: function(e){
-    e.preventDefault();
-    var title = this.$('.note-title').val();
-    var content = this.$('.note-content').val();
-    this.model.save({
-      title: title,
-      content: content
-    });
-  },
+  resaveNote: function(e){
+      e.preventDefault();
+      var title = this.$('.note-title-edit').val();
+      var content = this.$('.note-content-edit').val();
+      this.model.save({
+        title: title,
+        content: content
+      });
+    },
 
   resetNote: function(){
     var title = this.$('.note-title').val();
