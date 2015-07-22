@@ -1,3 +1,27 @@
+.laws li {
+  background-color: rgba(255, 255, 255, .9);
+  height: 200px;
+  width: 200px;
+  padding: 1em;
+  font-size: 16px;
+  overflow: scroll;
+  display: inline-block;
+}
+
+.ideas li {
+  background-color: rgba(255, 255, 255, .9);
+  height: 200px;
+  width: 200px;
+  padding: 1em;
+  font-size: 16px;
+  overflow: scroll;
+  display: inline-block;
+}
+
+.subtitle {
+  background-color: rgba(255, 255, 255, 1);
+}
+
 @media (min-width: 840px) {
 
 
