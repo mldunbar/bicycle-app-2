@@ -11,16 +11,10 @@ export default Backbone.View.extend({
 
 events: {
   'click .logout-button' : 'logout',
-  'click' : 'remove'
 },
 
   render: function(options) {
     this.$el.html(this.template(this.model));
-  },
-
-  remove: function(){
-    // this.mapView && this.mapView.remove();
-    Backbone.View.prototype.remove.apply(this);
   },
 
   logout: function(){

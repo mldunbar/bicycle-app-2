@@ -19,7 +19,11 @@
 }
 
 .subtitle {
+  @include span-columns(12);
   background-color: rgba(255, 255, 255, 1);
+  text-align: center;
+  margin-top: .5em;
+  margin-bottom: .5em;
 }
 
 @media (min-width: 840px) {
