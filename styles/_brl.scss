@@ -1,76 +1,58 @@
 @media (min-width: 840px) {
 
   .add-rack-div {
-    @include span-columns(8);
-    @include shift(2);
+    @include outer-container(12);
+    @include span-columns(4);
+    @include shift(4);
+    text-align: center;
     display: inline-block;
   }
 
-  .add-rack-div .show-add-brl {
-    @include span-columns(2);
-    @include shift(5);
-    margin-bottom: 1em;
-    background-color: rgba(239, 17, 123, 1);
+  .show-add-brl {
+    margin-bottom: .5em;
+  }
+
+  .add-brl-form {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    width: 50%;
+    height: 50%;
+    padding: 1em;
+    font-size: 14px;
     text-align: center;
   }
 
-  .add-rack-div input,
-  .add-rack-div button {
-    @include span-columns(3);
-    @include shift(4.5);
+  .add-brl-form .title {
+    @include outer-container(12);
+    @include span-columns(12);
     text-align: center;
-    margin-bottom: .5em;
+  }
+
+  .add-brl-form .lat {
+    @include outer-container(12);
+    @include span-columns(12);
+    text-align: center;
+  }
+
+  .add-brl-form .lng {
+    @include outer-container(12);
+    @include span-columns(12);
+    text-align: center;
+  }
+
+  .add-brl-form .infoWindow {
+    @include outer-container(12);
+    @include span-columns(12);
+    text-align: center;
   }
 
 }
 
 @media (max-width: 839px) and (min-width: 500px) {
 
-  .add-rack-div {
-    @include span-columns(8);
-    @include shift(2);
-    display: inline-block;
-  }
-
-  .add-rack-div .show-add-brl {
-    @include span-columns(2);
-    @include shift(5);
-    margin-bottom: 1em;
-    background-color: rgba(239, 17, 123, 1);
-    text-align: center;
-  }
-
-  .add-rack-div input,
-  .add-rack-div button {
-    @include span-columns(3);
-    @include shift(4.5);
-    text-align: center;
-    margin-bottom: .5em;
-    font-size: 15px;
-  }
 }
 
 @media (max-width: 499px) {
 
-  .add-rack-div {
-    @include span-columns(8);
-    @include shift(2);
-    display: inline-block;
-  }
 
-  .add-rack-div .show-add-brl {
-    @include span-columns(2);
-    @include shift(5);
-    margin-bottom: 1em;
-    background-color: rgba(239, 17, 123, 1);
-    text-align: center;
-  }
-
-  .add-rack-div input,
-  .add-rack-div button {
-    @include span-columns(3);
-    @include shift(4.5);
-    text-align: center;
-    margin-bottom: .5em;
-  }
 }
