@@ -1,6 +1,16 @@
-.outer-container{
+.laws-outer-container{
   @include outer-container(12);
-  width: auto;
+}
+
+.subtitle {
+  @include outer-container;
+  @include span-columns(11);
+  background-color: rgba(239, 17, 123, .8);
+  color: rgba(255, 216, 56, 1);
+  text-align: center;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  font-size: 1.5em;
 }
 
 .laws li {
@@ -21,17 +31,6 @@
   font-size: 16px;
   overflow: scroll;
   display: inline-block;
-}
-
-.subtitle {
-  @include outer-container;
-  @include span-columns(12);
-  background-color: rgba(239, 17, 123, .8);
-  color: rgba(255, 216, 56, 1);
-  text-align: center;
-  margin-top: .5em;
-  margin-bottom: .5em;
-  font-size: 1.5em;
 }
 
 @media (min-width: 840px) {
