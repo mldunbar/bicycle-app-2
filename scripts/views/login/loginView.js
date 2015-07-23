@@ -33,9 +33,6 @@ export default Backbone.View.extend({
       success: function(user) {
         router.navigate('brl', true);
       },
-      error: function(user, error) {
-        alert("nope");
-      }
     });
   },
 
