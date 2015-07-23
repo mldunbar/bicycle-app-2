@@ -164,6 +164,144 @@ module.exports = exports['default'];
   
 });
 
+require.register("models/markers", function(exports, require, module){
+  'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var Marker = Backbone.Model.extend({
+  idAttribute: 'objectId',
+
+  defaults: {
+    title: '',
+    lat: 0,
+    lng: 0,
+    infoWindow: ''
+  }
+});
+
+var MarkerCollection = Backbone.Collection.extend({
+  url: 'https://api.parse.com/1/classes/Marker',
+  model: Marker,
+
+  parse: function parse(response) {
+    return response.results;
+  }
+
+});
+
+exports['default'] = { Marker: Marker };
+exports['default'] = { MarkerCollection: MarkerCollection };
+module.exports = exports['default'];
+  
+});
+
+require.register("models/myLocation", function(exports, require, module){
+  "use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var MyLocation = Backbone.Model.extend({});
+
+exports["default"] = { MyLocation: MyLocation };
+module.exports = exports["default"];
+  
+});
+
+require.register("models/notes", function(exports, require, module){
+  'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var Note = Backbone.Model.extend({
+  idAttribute: 'objectId',
+
+  defaults: {
+    title: '',
+    content: ''
+  }
+
+});
+
+var NoteCollection = Backbone.Collection.extend({
+  url: "https://api.parse.com/1/classes/note",
+  model: Note,
+
+  parse: function parse(response) {
+    return response.results;
+  }
+});
+
+exports['default'] = { Note: Note, NoteCollection: NoteCollection };
+module.exports = exports['default'];
+  
+});
+
+require.register("models/rentalMarkers", function(exports, require, module){
+  'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var RentalMarker = Backbone.Model.extend({
+  idAttribute: 'objectId',
+
+  defaults: {
+    title: '',
+    lat: 0,
+    lng: 0,
+    infoWindow: ''
+  },
+
+  url: 'https://api.parse.com/1/classes/rentalMarker'
+
+});
+
+var RentalMarkerCollection = Backbone.Collection.extend({
+  url: 'https://api.parse.com/1/classes/rentalMarker',
+  model: RentalMarker,
+
+  parse: function parse(response) {
+    return response.results;
+  }
+});
+exports['default'] = { RentalMarker: RentalMarker, RentalMarkerCollection: RentalMarkerCollection };
+module.exports = exports['default'];
+  
+});
+
+require.register("models/users", function(exports, require, module){
+  'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var User = Backbone.Model.extend({
+
+  idAttribute: 'objectId',
+  urlRoot: 'https://api.parse.com/1/classes/User',
+
+  defaults: {
+    username: '',
+    password: '',
+    email: '',
+    notes: []
+  }
+});
+
+var UserCollection = Backbone.Collection.extend({
+  model: User,
+  url: 'https://api.parse.com/1/classes/User'
+});
+
+exports['default'] = { User: User, UserCollection: UserCollection };
+module.exports = exports['default'];
+  
+});
+
 require.register("views/brlView", function(exports, require, module){
   'use strict';
 
@@ -404,6 +542,10 @@ exports['default'] = Backbone.View.extend({
     this.listenTo(this.collection, 'update', this.renderChildren);
   },
 
+  events: {
+    'click': 'addNewMarker'
+  },
+
   render: function render(options) {
     this.map = new GMaps({
       el: this.el,
@@ -424,6 +566,77 @@ exports['default'] = Backbone.View.extend({
     this.collection.forEach((function (marker) {
       this.map.addMarker(marker.toJSON());
     }).bind(this));
+  },
+
+  addNewMarker: function addNewMarker() {
+    console.log('MIA');
+    // Update form values
+    var map;
+
+    // Update position
+    $(document).on('submit', '.edit_marker', function (e) {
+      e.preventDefault();
+
+      var $index = $(this).data('marker-index');
+
+      $lat = $('#marker_' + $index + '_lat').val();
+      $lng = $('#marker_' + $index + '_lng').val();
+
+      var template = $('#edit_marker_template').text();
+
+      // Update form values
+      var content = template.replace(/{{index}}/g, $index).replace(/{{lat}}/g, $lat).replace(/{{lng}}/g, $lng);
+
+      map.markers[$index].setPosition(new google.maps.LatLng($lat, $lng));
+      map.markers[$index].infoWindow.setContent(content);
+
+      $marker = $('#markers-with-coordinates').find('li').eq(0).find('a');
+      $marker.data('marker-lat', $lat);
+      $marker.data('marker-lng', $lng);
+    });
+
+    // Update center
+    $(document).on('click', '.pan-to-marker', function (e) {
+      e.preventDefault();
+
+      var lat, lng;
+
+      var $index = $(this).data('marker-index');
+      var $lat = $(this).data('marker-lat');
+      var $lng = $(this).data('marker-lng');
+
+      if ($index != undefined) {
+        // using indices
+        var position = map.markers[$index].getPosition();
+        lat = position.lat();
+        lng = position.lng();
+      } else {
+        // using coordinates
+        lat = $lat;
+        lng = $lng;
+      }
+
+      map.setCenter(lat, lng);
+    });
+
+    GMaps.on('click', map.map, function (event) {
+      var index = map.markers.length;
+      var lat = event.latLng.lat();
+      var lng = event.latLng.lng();
+
+      var template = $('#edit_marker_template').text();
+
+      var content = template.replace(/{{index}}/g, index).replace(/{{lat}}/g, lat).replace(/{{lng}}/g, lng);
+
+      map.addMarker({
+        lat: lat,
+        lng: lng,
+        title: 'Marker #' + index,
+        infoWindow: {
+          content: content
+        }
+      });
+    });
   }
 
 });
@@ -625,144 +838,6 @@ exports['default'] = Backbone.View.extend({
   }
 
 });
-module.exports = exports['default'];
-  
-});
-
-require.register("models/markers", function(exports, require, module){
-  'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-var Marker = Backbone.Model.extend({
-  idAttribute: 'objectId',
-
-  defaults: {
-    title: '',
-    lat: 0,
-    lng: 0,
-    infoWindow: ''
-  }
-});
-
-var MarkerCollection = Backbone.Collection.extend({
-  url: 'https://api.parse.com/1/classes/Marker',
-  model: Marker,
-
-  parse: function parse(response) {
-    return response.results;
-  }
-
-});
-
-exports['default'] = { Marker: Marker };
-exports['default'] = { MarkerCollection: MarkerCollection };
-module.exports = exports['default'];
-  
-});
-
-require.register("models/myLocation", function(exports, require, module){
-  "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var MyLocation = Backbone.Model.extend({});
-
-exports["default"] = { MyLocation: MyLocation };
-module.exports = exports["default"];
-  
-});
-
-require.register("models/notes", function(exports, require, module){
-  'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-var Note = Backbone.Model.extend({
-  idAttribute: 'objectId',
-
-  defaults: {
-    title: '',
-    content: ''
-  }
-
-});
-
-var NoteCollection = Backbone.Collection.extend({
-  url: "https://api.parse.com/1/classes/note",
-  model: Note,
-
-  parse: function parse(response) {
-    return response.results;
-  }
-});
-
-exports['default'] = { Note: Note, NoteCollection: NoteCollection };
-module.exports = exports['default'];
-  
-});
-
-require.register("models/rentalMarkers", function(exports, require, module){
-  'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-var RentalMarker = Backbone.Model.extend({
-  idAttribute: 'objectId',
-
-  defaults: {
-    title: '',
-    lat: 0,
-    lng: 0,
-    infoWindow: ''
-  },
-
-  url: 'https://api.parse.com/1/classes/rentalMarker'
-
-});
-
-var RentalMarkerCollection = Backbone.Collection.extend({
-  url: 'https://api.parse.com/1/classes/rentalMarker',
-  model: RentalMarker,
-
-  parse: function parse(response) {
-    return response.results;
-  }
-});
-exports['default'] = { RentalMarker: RentalMarker, RentalMarkerCollection: RentalMarkerCollection };
-module.exports = exports['default'];
-  
-});
-
-require.register("models/users", function(exports, require, module){
-  'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-var User = Backbone.Model.extend({
-
-  idAttribute: 'objectId',
-  urlRoot: 'https://api.parse.com/1/classes/User',
-
-  defaults: {
-    username: '',
-    password: '',
-    email: '',
-    notes: []
-  }
-});
-
-var UserCollection = Backbone.Collection.extend({
-  model: User,
-  url: 'https://api.parse.com/1/classes/User'
-});
-
-exports['default'] = { User: User, UserCollection: UserCollection };
 module.exports = exports['default'];
   
 });
