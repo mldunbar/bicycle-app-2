@@ -53,6 +53,47 @@
 }
 
 @media (max-width: 499px) {
+  .add-rack-div {
+    @include outer-container(12);
+  }
 
+  .show-add-brl {
+    @include outer-container(12);
+    @include shift(4);
+    margin-bottom: .5em;
+  }
+
+  .add-brl-form {
+    @include outer-container(12);
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    padding: 1em;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .add-brl-form .title {
+    @include outer-container(12);
+    @include span-columns(12);
+    text-align: center;
+  }
+
+  .add-brl-form .lat {
+    @include outer-container(12);
+    @include span-columns(12);
+    text-align: center;
+  }
+
+  .add-brl-form .lng {
+    @include outer-container(12);
+    @include span-columns(12);
+    text-align: center;
+  }
+
+  .add-brl-form .infoWindow {
+    @include outer-container(12);
+    @include span-columns(12);
+    text-align: center;
+  }
 
 }
