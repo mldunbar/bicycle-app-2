@@ -2,7 +2,7 @@
 
   .add-rack-div {
     @include outer-container(12);
-    @include span-columns(4);
+    @include span-columns(3);
     @include shift(4);
     text-align: center;
     display: inline-block;

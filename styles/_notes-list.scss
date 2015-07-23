@@ -1,3 +1,7 @@
+.notes-page-container{
+  @include outer-container;
+}
+
 .notes-add-form{
   display: inline-block;
   background-color: rgba(255, 255, 255, .9);
@@ -35,7 +39,7 @@
   .whole-note{
     background-color: rgba(255, 255, 255, .9);
     height: 200px;
-    width: 200px;
+    width: 250px;
     padding: 1em;
     font-size: 14px;
     overflow: scroll;
