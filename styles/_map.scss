@@ -2,7 +2,7 @@
 
   .map{
     @include span-columns(10);
-    @include shift(1);
+    @include shift(1.5);
     width: 1000px;
     height: 500px;
     margin-bottom: 1em;
