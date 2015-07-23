@@ -1,10 +1,14 @@
 @media (min-width: 840px) {
 
   .map{
-    @include span-columns(12);
+    @include outer-container;
+/*     @include span-columns(11);
+@include shift(.5); */
     height: 500px;
     margin-bottom: 1em;
     border: 5px solid white;
+    margin: auto;
+
   }
 }
 
@@ -12,8 +16,10 @@
 
   .map{
     @include outer-container;
-    @include span-columns(12);
-    height: 500px;
+/*     @include span-columns(12);
+ */    height: 500px;
+ margin: auto;
+
     margin-bottom: 1em;
     border: 5px solid white;
   }
@@ -23,8 +29,8 @@
 
   .map{
     @include outer-container;
-    @include span-columns(12);
     display: inline-block;
+    margin: auto;
     height: 500px;
     margin-bottom: 1em;
     border: 5px solid white;

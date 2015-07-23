@@ -27,18 +27,17 @@
     vertical-align: middle;
   }
 
-  .header button {
-    background-color: rgba(255, 218, 56, 1);
+  .header a {
+    background-color: rgba(239, 17, 123, 1);
+    color: rgba(255, 216, 56, 1);
     height: 2em;
     vertical-align: middle;
-    font-size: 12px;
   }
 
   .header .logout-button {
     height: 2em;
     vertical-align: middle;
-    padding: 2px 6px 3px 6px;
-    font-size: 12px;
+    padding: 10px;
   }
 }
 
