@@ -1,7 +1,47 @@
+/* @media (min-width: 840px) {
+
+  .map{
+    @include outer-container;
+    height: 500px;
+    margin-bottom: 1em;
+    border: 5px solid white;
+    margin: auto;
+
+  }
+}
+
+@media (max-width: 839px) and (min-width: 500px) {
+
+  .map{
+    @include outer-container;
+    @include span-columns(12);
+    display: inline-block;
+    height: 500px;
+    margin-bottom: 1em;
+    border: 5px solid white;
+  }
+}
+
+@media (max-width: 499px) {
+
+  .map{
+    @include outer-container;
+    margin: 0 auto;
+    display: inline-block;
+    height: 500px;
+    margin-bottom: 1em;
+    border: 5px solid white;
+
+  }
+}
+ */
+
 @media (min-width: 840px) {
 
   .map{
-    @include span-columns(12);
+    @include outer-container;
+    margin-left: 1em;
+    margin-right: 1em;
     height: 500px;
     margin-bottom: 1em;
     border: 5px solid white;
@@ -12,7 +52,8 @@
 
   .map{
     @include outer-container;
-    @include span-columns(12);
+    margin-left: 1em;
+    margin-right: 1em;
     height: 500px;
     margin-bottom: 1em;
     border: 5px solid white;
@@ -24,6 +65,8 @@
   .map{
     @include outer-container;
     @include span-columns(12);
+    margin-left: 1em;
+    margin-right: 1em;
     display: inline-block;
     height: 500px;
     margin-bottom: 1em;
